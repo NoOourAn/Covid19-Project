@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<!-- <app-country [arrayList]="countries$ | async"></app-country> -->
+
+<!-- <ul>
+    <li *ngFor="let country of countries$ | async">{{ country }}</li>
+  </ul> -->
+
+  <table class="table table-borderless table-striped table-earning">
+    <thead style="background-color: #2794B5; color: white;">
+    <tr>
+    <th>Country Name</th>
+    <th>City/Province Name</th>
+    <th>Last updated</th>
+    <th>Confirmed</th>
+    <th>Deaths</th>
+    <th>Recovered</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+    <tr *ngFor="let country of countries">
+      <td>{{ country.countryName }}</td>
+      <td *ngIf="country.cityName || country.provinceName; else notExist">{{ country.cityName || country.provinceName }}</td>
+      <td>{{ country.lastUpdate }}</td>
+      <td>{{ country.confirmed }}</td>
+      <td>{{ country.deaths }}</td>
+      <td>{{ country.recovered }}</td>
+    </tr>
+
+    <ng-template #notExist>
+      <td> ----- </td>
+    </ng-template>
+      <!-- <app-country></app-country> -->
+    
+    
+    </tbody>
+    </table>
