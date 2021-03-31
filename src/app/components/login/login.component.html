@@ -17,9 +17,9 @@
                       <div class="form-label-group">
                         <input type="email" formControlName="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                       </div>
-                      <!-- username error handling (interactive) and (on submit)  -->
+                      <!-- email error handling (interactive) and (on submit)  -->
                     <div *ngIf="(LoginForm.controls.email.errors && LoginForm.controls.email.touched) || (emailError && !LoginForm.controls.email.touched)">
-                      <div *ngIf="LoginForm.controls.email.errors.required" class="text-light my-2" role="alert">
+                      <div *ngIf="LoginForm.controls.email.errors.required" class="text-dark my-2" role="alert">
                           * this field is required !
                       </div>
                     </div>
@@ -29,7 +29,7 @@
                       </div>
                       <!-- password error handling (interactive) and (on submit) -->
                       <div *ngIf="(LoginForm.controls.password.errors && LoginForm.controls.password.touched) || (passwordError && !LoginForm.controls.password.touched)">
-                        <div *ngIf="LoginForm.controls.password.errors.required" class="text-light my-2" role="alert">
+                        <div *ngIf="LoginForm.controls.password.errors.required" class="text-dark my-2" role="alert">
                             * this field is required !
                         </div>
                       </div>

@@ -12,6 +12,9 @@ import { CountriesService } from './services/countries.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UsersService } from './services/users.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { UsersService } from './services/users.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MDBBootstrapModule.forRoot(),
   ],
   providers: [
     CountriesService,

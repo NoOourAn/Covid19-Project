@@ -36,9 +36,9 @@ export class LoginComponent implements OnInit {
   login(){
     
     if(this.LoginForm.status == "VALID"){
-      const {username,password} = this.LoginForm.value
+      const {email,password} = this.LoginForm.value
       this.user = {
-        username,
+        email,
         password,
       }
       this.subscriber = this.usersService.signInUser(this.user)
@@ -57,9 +57,9 @@ export class LoginComponent implements OnInit {
         this.errorMsg = "server error...please try again later"
       })
     }else{
-      let err = this.LoginForm.controls.username.errors;
+      let err = this.LoginForm.controls.email.errors;
       if(err){
-        this.usernameError = true
+        this.emailError = true
       }
       err = this.LoginForm.controls.password.errors
       if(err){

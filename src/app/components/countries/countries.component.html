@@ -1,9 +1,4 @@
-<app-navbar></app-navbar>
-<!-- <app-country [arrayList]="countries$ | async"></app-country> -->
-
-<!-- <ul>
-    <li *ngFor="let country of countries$ | async">{{ country }}</li>
-  </ul> -->
+<!-- <app-navbar></app-navbar>
 
   <table class="table table-borderless table-striped table-earning">
     <thead style="background-color: #2794B5; color: white;">
@@ -14,6 +9,7 @@
     <th>Confirmed</th>
     <th>Deaths</th>
     <th>Recovered</th>
+    <th>Favourites</th>
     </tr>
     </thead>
     <tbody>
@@ -30,8 +26,68 @@
     <ng-template #notExist>
       <td> ----- </td>
     </ng-template>
-      <!-- <app-country></app-country> -->
     
     
     </tbody>
-    </table>
+    </table> -->
+
+
+    <!-- <app-navbar></app-navbar> -->
+    <div class="container pt-5">
+
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <div class="md-form">
+            <input
+              type="text"
+              [(ngModel)]="searchText"
+              class="form-control"
+              placeholder="search by country name..."
+              mdbInput
+            />
+          </div>
+        </div>
+      </div>
+
+      <table mdbTable #tableEl="mdbTable" class="z-depth-1" hover="true">
+        <thead>
+          <tr>
+            <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let country of countries; let i = index">
+            <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
+                scope="row">{{ country.countryName }}</th>
+            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{ country.cityName || country.provinceName || '------'}}</td>
+            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{country.lastUpdate}}</td>
+            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{country.confirmed}}</td>
+            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{country.deaths}}</td>
+            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{country.recovered}}</td>
+            <!-- <td><mdb-icon fas icon="leaf" class="mr-2 teal-text" aria-hidden="true"></mdb-icon>moooo</td> -->
+            <!-- *ngIf="auth.isLoggedIn" -->
+
+            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+              <button type="button" mdbBtn outline="true" color="warning" size="sm" class="waves-effect">
+                <mdb-icon far icon="heart"></mdb-icon>Button</button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot class="grey lighten-5 w-100 m-3">
+          <tr>
+            <td colspan="4">
+              <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="countries"></mdb-table-pagination>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <ng-template #notExist>
+      <td> ----- </td>
+    </ng-template>
+
+
+
+
+
